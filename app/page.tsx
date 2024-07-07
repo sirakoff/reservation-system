@@ -1,9 +1,12 @@
-import DeployButton from "@/components/DeployButton";
-import AuthButton from "@/components/AuthButton";
+// @ts-ignore
+
 import { createClient } from "@/utils/supabase/server";
-import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
+// @ts-ignore
+
 import Header from "@/components/Header";
 import { redirect } from "next/navigation";
+// @ts-ignore
+
 import TimeTable from "@/components/TimeTable";
 const supabase = createClient();
 

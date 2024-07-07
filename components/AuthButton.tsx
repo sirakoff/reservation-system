@@ -1,3 +1,5 @@
+// @ts-ignore
+
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";

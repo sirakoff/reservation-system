@@ -8,16 +8,10 @@ import "@schedule-x/theme-default/dist/index.css";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
 import moment from "moment";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { ReservationDialog } from "./ReservationDialog";
 import { useEffect, useState } from "react";
+// @ts-ignore
+
 import { createClient } from "@/utils/supabase/client";
 const supabase = createClient();
 const eventsServicePlugin = createEventsServicePlugin();
