@@ -8,9 +8,10 @@ import { redirect } from "next/navigation";
 // @ts-ignore
 
 import TimeTable from "@/components/TimeTable";
-const supabase = createClient();
 
 export default async function ProtectedPage() {
+  const supabase = createClient();
+
   const {
     data: { user },
   } = await supabase.auth.getUser();

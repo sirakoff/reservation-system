@@ -26,14 +26,14 @@ import { useState } from "react";
 const supabase = createClient();
 
 export type ReservationSlot = {
-  id: String;
-  capacity: Number;
-  date: String;
-  start: String;
-  end: String;
-  calendarId: String;
-  userId: String;
-  remoteId: Number | String;
+  id: string;
+  capacity: number;
+  date: string;
+  start: string;
+  end: string;
+  calendarId: string;
+  userId: string;
+  remoteId: number | string;
 };
 
 export function ReservationDialog({
@@ -43,7 +43,7 @@ export function ReservationDialog({
   user,
 }: {
   event: null | ReservationSlot;
-  open: Boolean;
+  open: boolean | undefined;
   close: Function;
   user: any;
 }) {
@@ -59,6 +59,7 @@ export function ReservationDialog({
     const { error } = await supabase
       .from("slots")
       .delete()
+      //@ts-ignore
       .eq("id", event?.remoteId);
 
     if (error) {
@@ -79,6 +80,8 @@ export function ReservationDialog({
 
     let { data: tables } = await supabase
       .from("tables")
+      //@ts-ignore
+
       .select("*", "slots!inner(range)'")
       .overlaps("slots.range", `[${startDay}, ${endDay}]`)
       .gte("capacity", capacity).select(`
@@ -87,9 +90,10 @@ export function ReservationDialog({
             slots ( id, range )
     `);
 
-    let availableTables = tables.filter((t: any) => t.slots.length === 0);
+    let availableTables = tables?.filter((t: any) => t.slots.length === 0);
 
-    if (!availableTables.length) return setErrorText("No Tables available");
+    if (!availableTables || !availableTables.length)
+      return setErrorText("No Tables available");
 
     const { data, error: slotError } = await supabase
       .from("slots")
