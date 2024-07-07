@@ -22,10 +22,8 @@ import { Label } from "@/components/ui/label";
 import { createClient } from "@/utils/supabase/client";
 import moment from "moment";
 import { useState } from "react";
-// @ts-ignore
 
-import { Database } from "@/supabase.ts";
-const supabase = createClient<Database>();
+const supabase = createClient();
 
 export type ReservationSlot = {
   id: String;
