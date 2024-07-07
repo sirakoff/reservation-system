@@ -76,7 +76,7 @@ export function ReservationDialog({
     let endDay = moment(endTime).format("YYYY-MM-DD HH:mm");
     // console.log(startDay);
 
-    let { data: tables, error: capacityError } = await supabase
+    let { data: tables } = await supabase
       .from("tables")
       .select("*", "slots!inner(range)'")
       .overlaps("slots.range", `[${startDay}, ${endDay}]`)

@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { headers } from "next/headers";
+// @ts-ignore
+
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
+// @ts-ignore
+
 import { SubmitButton } from "../auth/submit-button";
 
 export default async function Login({
